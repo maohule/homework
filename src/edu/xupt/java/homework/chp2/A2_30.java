@@ -1,4 +1,4 @@
-package edu.xupt.java.homework.chp2;
+﻿package edu.xupt.java.homework.chp2;
 
 import java.util.Scanner;
 
