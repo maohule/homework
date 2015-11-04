@@ -1,16 +1,35 @@
-package edu.xupt.java.homework.chp6;
+﻿package edu.xupt.java.homework.chp6;
 import java.util.*;
-class A
+
+public class A6_31 
 {
 	
-	public void question1(int a,int b)
-	{
-		System.out.println("How much is "+a+" times "+b+"?");
+	Random rand = new Random();
+	Scanner input = new Scanner(System.in);
+	
+	public int Question(){
+		int num1 = rand.nextInt(10);
+		int num2 = rand.nextInt(10);
+		System.out.println("How much is "+num1+" times "+num2);
+		return num1*num2;
 	}
-	public void question2()
-	{
-		System.out.println("10乘10的结果共有几位数字?");
+	
+	public void doQuestion(){
+		int answer = 0;
+		int your_ans = 0;
+		int count = 0;
+		while(count<2){
+			answer = Question();
+			your_ans = input.nextInt();
+			while(answer!=your_ans){
+				wrongResponse(rand.nextInt(4)+1);
+				your_ans = input.nextInt();
+			}
+			correctResponse(rand.nextInt(4)+1);
+			count++;
+		}
 	}
+	
 	public void correctResponse(int c)
 	{
 		switch(c)
@@ -29,6 +48,7 @@ class A
 			
 		}
 	}
+	
 	public void wrongResponse(int c)
 	{
 		switch(c)
@@ -46,46 +66,10 @@ class A
 			System.out.println("No.Keep trying.");
 		}
 	}
-}
-public class A6_31 {
+	
 	public static void main(String args[])
 	{
-		Random xx=new Random();
-		int number1=xx.nextInt(10)+1;
-		int number2=xx.nextInt(10)+1;
-		A suan=new A();
-		suan.question1(number1, number2);
-		Scanner in=new Scanner(System.in);
-		int answer=in.nextInt();
-		Boolean boo=true;
-		while(boo)
-		{	
-			
-			if(answer==number1*number2)
-			{
-				suan.correctResponse(xx.nextInt(4)+1);
-				boo=false;
-			}
-			else
-			{
-				suan.wrongResponse(xx.nextInt(4)+1);
-				answer=in.nextInt();
-			}
-		}
-		boo=true;
-		while(boo)
-		{
-			suan.question2();
-			answer=in.nextInt();
-			if(answer==3)
-			{
-				suan.correctResponse(xx.nextInt(4)+1);
-				boo=false;
-			}
-			else
-			{
-				suan.wrongResponse(xx.nextInt(4)+1);
-			}
-		}
+		A6_31 cu=new A6_31();
+		cu.doQuestion();
 	}
 }
